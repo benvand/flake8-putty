@@ -63,6 +63,7 @@ setup(
         # extensions were introduced in 2.0
         # flake8 v3 internals are very different
         'flake8>=2,<3',
+        'flake8_polyfill>=1.0.1',
         'packaging>=16.0',
     ],
     license='MIT',

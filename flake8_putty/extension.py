@@ -5,6 +5,8 @@ from __future__ import absolute_import, unicode_literals
 import functools
 import sys
 
+from flake8_polyfill import options
+
 from flake8_putty.config import Parser, RegexRule, RegexSelector
 
 
@@ -109,22 +111,22 @@ class PuttyExtension(object):
     @classmethod
     def add_options(cls, parser):
         """Add options for command line and config file."""
-        parser.add_option(
-            '--putty-select', metavar='errors', default='',
+        options.register(
+            parser, '--putty-select', metavar='errors', default='',
             help='putty select list',
         )
-        parser.add_option(
-            '--putty-ignore', metavar='errors', default='',
+        options.register(
+            parser, '--putty-ignore', metavar='errors', default='',
             help='putty ignore list',
         )
-        parser.add_option(
-            '--putty-no-auto-ignore', action='store_false',
+        options.register(
+            parser, '--putty-no-auto-ignore', action='store_false',
             dest='putty_auto_ignore', default=False,
             help=(' (default) do not auto ignore lines matching '
                   '# flake8: disable=<code>,<code>'),
         )
-        parser.add_option(
-            '--putty-auto-ignore', action='store_true',
+        options.register(
+            parser, '--putty-auto-ignore', action='store_true',
             dest='putty_auto_ignore', default=False,
             help=('auto ignore lines matching '
                   '# flake8: disable=<code>,<code>'),
